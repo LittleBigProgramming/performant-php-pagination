@@ -36,6 +36,6 @@ class User extends Authenticatable
     }
 
     public function avatar() {
-        return 'https://www.gravatar.com/avatar/x?' . md5($this->email) . '?s=356d=mm';
+        return 'https://www.gravatar.com/avatar/' . md5($this->email) . '?d=mp&f=y';
     }
 }

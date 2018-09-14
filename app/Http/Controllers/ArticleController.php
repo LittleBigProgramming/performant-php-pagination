@@ -8,8 +8,12 @@ use App\Transformers\ArticleTransformer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class ArticleController extends Controller {
+
+    /**
+     * @return mixed
+     */
     public function index() {
-        $articles = Article::latestFirst()->paginate(10);
+        $articles = Article::latestFirst()->paginate(15);
         $articlesCollection = $articles->getCollection();
 
         return fractal()
