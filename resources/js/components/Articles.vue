@@ -7,6 +7,7 @@
 
                     <div class="card-body">
                         <post v-for="(article) in articles" v-bind:article="article"></post>
+                        <pagination v-if="meta && articles.length" :pagination="meta.pagination"></pagination>
                     </div>
                 </div>
             </div>
@@ -16,6 +17,8 @@
 
 <script>
     import axios from 'axios';
+    import eventHandler from '../events.js';
+
     export default {
         data () {
             return {
@@ -25,24 +28,22 @@
         },
         methods: {
             getArticles (page) {
-
                 axios.get('http://laravel-pagination.test//articles?page=' + page)
                     .then((response) => {
-                        // handle success
                         this.articles = response.data.data
-                       // this.meta = response.body.meta
-                        console.log(response);
+                        this.meta = response.data.meta
                         console.log(response.data.data);
+                        console.log(this.meta)
                     })
                     .catch( (error) => {
-                        // handle error
                         console.log(error);
                     })
             }
         },
         mounted() {
-            console.log('Component mounted.')
             this.getArticles(1);
+
+            eventHandler.$on('switched-page', this.getArticles);
         }
     }
 </script>

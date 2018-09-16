@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 Vue.component('articles', require('./components/Articles.vue'));
 Vue.component('post', require('./components/Article.vue'));
+Vue.component('pagination', require('./components/Pagination.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -13,7 +13,7 @@ class ArticleController extends Controller {
      * @return mixed
      */
     public function index() {
-        $articles = Article::latestFirst()->paginate(15);
+        $articles = Article::latestFirst()->paginate(6);
         $articlesCollection = $articles->getCollection();
 
         return fractal()
