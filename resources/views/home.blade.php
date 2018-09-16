@@ -2,4 +2,5 @@
 
 @section('content')
     <Articles></Articles>
+    <Users></Users>
 @endsection
