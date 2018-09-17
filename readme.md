@@ -19,4 +19,8 @@ In order to add X amount of users using tinker use the user factory which has be
 
 To create articles that are associated with a user run the following `factory(App\Article::class, X)->create(['user_id' => X])`
 
-The url format for pagination is `http://laravel-pagination.test//articles?page=X`
+The url format for pagination is `http://laravel-pagination.test//articles?page=X` this is the same for the the users endpoint with the keyword articles replaced with users. 
+
+The pagination data carries to amount that is set in the paginate method called in the relevant controller along with the fractal meta data which contains the essential information for the pagination component. 
+
+For reusability the `pagination` component has been set up in a such a way that it can be used with a `for="keyword` or fallback to default to work seperate of each other within the same page. 
