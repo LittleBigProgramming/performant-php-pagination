@@ -1,6 +1,6 @@
 <template>
-    <nav class="mx-auto">
-        <ul class="pagination mx-auto">
+    <nav class="mx-auto center-block">
+        <ul class="pagination">
             <li class="page-item" v-bind:class="{ 'disabled': !pagination.links.previous }">
                 <a class="page-link" href="#" @click.prevent="switchPage(pagination.current_page - 1)">Previous</a>
             </li>
@@ -21,24 +21,26 @@
     import eventHandler from '../events.js';
 
     export default {
-        props: [
-            'pagination'
-        ],
+        props: {
+            pagination: Object,
+            for: {
+                type: String,
+                default: 'default'
+            }
+        },
         methods: {
             switchPage (page) {
-                if (page < 1 || this.pagination.total_pages) {
+
+                if (page < 1 || page > this.pagination.total_pages) {
                     return;
                 }
 
-                eventHandler.$emit('switched-page', page);
+                eventHandler.$emit(this.for + '.switched-page', page);
             }
         }
     }
 </script>
 
 <style scoped>
-    nav {
-        display: block;
-        width: 50%;
-    }
+
 </style>

@@ -13,7 +13,7 @@ class UserController extends Controller {
      * @return mixed
      */
     public function index() {
-        $users = User::paginate(5);
+        $users = User::paginate(10);
         $usersCollection = $users->getCollection();
 
         return fractal()

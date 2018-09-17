@@ -4,10 +4,9 @@
             <div class="col-md-8">
                 <div class="card card-default">
                     <div class="card-header">Articles</div>
-
                     <div class="card-body">
                         <post v-for="(article) in articles" v-bind:article="article"></post>
-                        <pagination v-if="meta && articles.length" :pagination="meta.pagination"></pagination>
+                        <pagination v-if="meta && articles.length" for="articles" :pagination="meta.pagination"></pagination>
                     </div>
                 </div>
             </div>
@@ -43,7 +42,15 @@
         mounted() {
             this.getArticles(1);
 
-            eventHandler.$on('switched-page', this.getArticles);
+            eventHandler.$on('articles.switched-page', this.getArticles);
         }
     }
 </script>
+
+<style scoped>
+    nav {
+        display: block;
+        width: 50%;
+        margin: auto;
+    }
+</style>

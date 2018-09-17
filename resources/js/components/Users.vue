@@ -13,7 +13,7 @@
                                 <h5 class="mt-0"><a href="#">{{ user.name }}</a></h5>
                             </div>
                         </div>
-                        <pagination v-if="meta && users.length" :pagination="meta.pagination"></pagination>
+                        <pagination v-if="meta && users.length" for="users" :pagination="meta.pagination"></pagination>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
         mounted() {
             this.getUsers(1);
 
-            eventHandler.$on('switched-page', this.getUsers);
+            eventHandler.$on('users.switched-page', this.getUsers);
         }
     }
 </script>
@@ -60,5 +60,11 @@
     }
     .media {
         padding: 0 0 10px 0;
+    }
+
+    nav {
+        display: block;
+        width: 90%;
+        margin: auto;
     }
 </style>
